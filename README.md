@@ -22,7 +22,7 @@
 
 ​		其中，RGB表示RGB图片，Depth表示深度图，IR表示近红外图。三个模态的数据可以都用来训练，以使模型适应不同图像采集设备的需求。为了简单，本项目仅使用RGB图像训练。
 
-​		数据集下载链接：https://pan.baidu.com/s/1Ksv9okVHpTh_O1Q9LSJYkA   提取码：wej6
+​		数据集下载链接：https://gas.graviti.cn/dataset/datawhale/CASIA-SURF
 
 ​		数据集目录结构如图所示：
 
