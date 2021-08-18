@@ -18,7 +18,7 @@
 
 ​		本项目数据集使用中科院大型人脸活体检测数据库CACIA-SURF，这是一个包含大量不同年龄段人的多模态(RGB, Depth，IR)的数据集，其中包含大量真实活体人脸样本，也包含了对应的攻击样本，如图所示，图例中的攻击样本是以打印出来的人脸作为攻击样本，或者露出五官中的部分结合打印人脸一起作为攻击样本，当然还有别的攻击样本制作的形式。因此模型训练的目标就是要在遇到这些攻击样本的时候能够正确识别出它不是一个活体。
 
-![image-20210727160429870](C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210727160429870.png)
+![image-20210727160429870](.\readme_imgs\image-20210727160429870.png)
 
 ​		其中，RGB表示RGB图片，Depth表示深度图，IR表示近红外图。三个模态的数据可以都用来训练，以使模型适应不同图像采集设备的需求。为了简单，本项目仅使用RGB图像训练。
 
@@ -26,7 +26,7 @@
 
 ​		数据集目录结构如图所示：
 
-![image-20210727205810803](C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210727205810803.png)
+![image-20210727205810803](.\readme_imgs\image-20210727205810803.png)
 
 ​		其中，Training中为训练集图片，Val为验证集图片，train_list.txt为训练集各个样本的路径及标签，val_private_list.txt为验证集各个样本的路径及标签，val_public_list.txt本项目暂时不用。
 
@@ -36,7 +36,7 @@
 
 ​		本项目使用基于resnet18的二分类模型对RGB图像进行活体、非活体的分类识别， 网络结构如图所示，有关于resnet的知识可自行查阅。
 
-![resnet18](C:\Users\Dell\Desktop\imgs\resnet18.png)
+![resnet18](.\readme_imgs\resnet18.png)
 
 
 
@@ -48,7 +48,7 @@
 
 ​		项目代码目录如图所示：
 
-![image-20210727163718571](C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210727163718571.png)
+![image-20210727163718571](.\readme_imgs\image-20210727163718571.png)
 
 ​		
 
@@ -98,15 +98,15 @@ python train_CyclicLR.py --model baseline --image_mode color --image_size 32 --c
 
 ​		对cycle_num和cycle_inter参数的说明，本项目学习率衰减策略采用周期性余弦衰减，cycle_num表示周期数，cycle_inter表示一个周期内训练的epoch数，即每经过cycle_inter个epoch，学习率从初始值下降到最低值，如下图所示。
 
-<img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210727173024802.png" alt="image-20210727173024802" style="zoom:50%;" />
+<img src=".\readme_imgs\image-20210727173024802.png" alt="image-20210727173024802" style="zoom:50%;" />
 
 ​		然后就开始训练了，期间会打印出一些训练过程中的loss、acc、acer等信息，如需要别的日志信息可自行修改。
 
-![image-20210727173301783](C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210727173301783.png)
+![image-20210727173301783](.\readme_imgs\image-20210727173301783.png)
 
 ​		训练完成后的模型保存在路径models/baseline_color_32/checkpoint下，默认保存每个周期内最低acer模型、最后一个epoch训练结束的模型和全局最低acer模型，如下图所示。
 
-![image-20210727173849108](C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210727173849108.png)
+![image-20210727173849108](.\readme_imgs\image-20210727173849108.png)
 
 ##### 在验证集上测试模型
 
@@ -116,7 +116,7 @@ python train_CyclicLR.py --mode infer_test --model baseline --image_mode color -
 
 验证集上结果，ACER=0.0358
 
-![image-20210727180931113](C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210727180931113.png)
+![image-20210727180931113](.\readme_imgs\image-20210727180931113.png)
 
 ##### 模型效果测试
 
@@ -148,7 +148,7 @@ python face_recognize.py
 
 ​	                                                                                   	**********************************************动图*******************************************************
 
-<img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210727200432809.png" alt="image-20210727200432809" style="zoom:50%;" />
+<img src=".\readme_imgs\image-20210727200432809.png" alt="image-20210727200432809" style="zoom:50%;" />
 
 
 
